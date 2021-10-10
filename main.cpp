@@ -1,17 +1,59 @@
-#include <libapp.h>
-#include <stdio.h>
+#include <CString.h>
+#include <string.h>
 
-#include <print.h>
 
-int main()
+CString argsToCString(int argc, char **argv)
 {
-    setbuf(stdout, NULL);
+    CString result(64);
+    int size = 0;
 
-    pexec("/usr/bin/mpv /home/hotnuma/Downloads/test.avi");
+    for (int i = 0; i < argc; ++i)
+    {
+        char *arg = argv[i];
+        int len = strlen(arg);
 
-    print("end");
+        if (len < 1)
+            continue;
 
-    return 0;
+        result.resize(size + len + 2);
+        char *p = result.data() + size;
+        strcpy(p, arg);
+        size += len + 1;
+    }
+
+    if (size < 1)
+    {
+        result.clear();
+        return result;
+    }
+
+    result.resize(size + 1);
+    result.terminate(size);
+
+    return result;
+}
+
+int main(int argc, char **argv)
+{
+    CString cmd = argsToCString(argc, argv);
+
+    //int size = cmd.size();
+
+
+//    const char *p = cmd.c_str();
+//    const char *start = p;
+
+//    while (1)
+//    {
+//        if (*p == '\0')
+//        {
+
+//        }
+
+//        ++p;
+//    }
+
+
 }
 
 
