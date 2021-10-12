@@ -5,12 +5,12 @@
 
 int main()
 {
-    const char *indir = "D:\\Films\\Ep - Faites entrer l'accusé 1";
-    const char *outpath = "D:\\Downloads\\fela_list.txt";
+    const char *indir = "/home/hotnuma/Config";
+    const char *outpath = "/tmp/result.txt";
 
     CFile outfile;
     if (!outfile.open(outpath, "wb"))
-        return false;
+        return 1;
 
     CDirParser dir;
     if (!dir.open(indir, CDP_FILES | CDP_RELATIVE))

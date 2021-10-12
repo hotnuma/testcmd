@@ -1,6 +1,6 @@
 #include <syslog.h>
 
-char logTxt[]="test";
+char logTxt[] = "test";
 
 int main()
 {
