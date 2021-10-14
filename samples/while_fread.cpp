@@ -1,24 +1,25 @@
 #include <CString.h>
 #include <CFile.h>
 #include <stdio.h>
+
 #include <print.h>
 
-int main(int argc, char **argv)
+int main()
 {
     size_t bsize = 4096;
 
     CString buffer(bsize + 1);
     int size = 0;
 
-    FILE *file = fopen("/var/log/syslog", "rb");
-    if (!file)
+    FILE *fp = fopen("/var/log/syslog", "rb");
+    if (!fp)
         return -1;
 
     char *p = buffer.data();
 
     while (1)
     {
-        size_t nb = fread(p, 1, bsize, file);
+        size_t nb = fread(p, 1, bsize, fp);
         size += nb;
 
         if (nb < bsize)
@@ -32,7 +33,7 @@ int main(int argc, char **argv)
     //buffer.resize(size + 1);
     buffer.terminate(size);
 
-    fclose(file);
+    fclose(fp);
 
     print(buffer);
 

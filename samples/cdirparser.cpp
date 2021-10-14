@@ -1,29 +1,19 @@
 #include "CDirParser.h"
-#include "CFile.h"
 
 #include "print.h"
 
 int main()
 {
-    const char *indir = "/home/hotnuma/Config";
-    const char *outpath = "/tmp/result.txt";
-
-    CFile outfile;
-    if (!outfile.open(outpath, "wb"))
-        return 1;
+    const char *indir = "/proc/asound";
 
     CDirParser dir;
-    if (!dir.open(indir, CDP_FILES | CDP_RELATIVE))
+    if (!dir.open(indir, CDP_FILES | CDP_SUBDIRS))
         return 1;
 
     CString filepath;
 
     while (dir.read(filepath))
     {
-        outfile << indir;
-        outfile << "\t";
-        outfile << filepath;
-        outfile << "\n";
         print(filepath);
     }
 

@@ -9,13 +9,14 @@ int main()
     {
         --count;
 
-        fprintf(stdout, "%i stdout\n", count);
+        fprintf(stdout, "stdout : %d\n", count);
         fflush(stdout);
-        
-        //fprintf(stderr, "%i stderr\n", count);
-        //fflush(stderr);
+
+        fprintf(stderr, "stderr : %d\n", count);
+        fflush(stderr);
 
         sleep(1);
     }
 }
+
 

@@ -1,26 +1,23 @@
-#include <libapp.h>
-#include <libpath.h>
-#include <print.h>
+#include <stdlib.h>
 #include <stdio.h>
+
+#include <print.h>
 
 int main()
 {
-    setbuf(stdout, nullptr);
-
-    CString path = getApplicationDir();
-    CString testapp = pathJoin(path, "../samples/testout");
-
-    FILE *fp = popen(testapp, "r");
+    FILE *fp = popen("ls -la", "r");
 
     if (!fp)
     {
-        print("can't find program %s", testapp.c_str());
+        print("can't find program");
+
         exit(1);
     }
 
-    char readbuf[80];
+    int size = 1023;
+    char readbuf[size + 1];
 
-    while (fgets(readbuf, 80, fp))
+    while (fgets(readbuf, size, fp))
     {
         print("line = %s", readbuf);
     }
