@@ -1,4 +1,4 @@
-#include "lib/CProcess.h"
+#include <CProcess.h>
 
 #include "print.h"
 
@@ -7,13 +7,25 @@ int main()
     CString cmd = "ls -la";
 
     CProcess process;
-    if (!process.start(cmd, PF_PIPEOUT))
-        return 1;
+    if (!process.start(cmd, CPF_PIPEOUT))
+    {
+        print("start failed");
 
-    if (process.exitStatus() != 0)
-        return 1;
+        return -1;
+    }
 
-    print(process.outBuff);
+    int status = process.exitStatus();
+
+    if (status != 0)
+    {
+        print("program returned : %d", status);
+
+        return -1;
+    }
+
+    CString result = process.outBuff;
+
+    print(result);
 
     return 0;
 }

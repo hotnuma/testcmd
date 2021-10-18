@@ -18,10 +18,13 @@
 
 int main()
 {
-    const char *cmd = "/home/hotnuma/testout";
-
     char buff[BUFF_SIZE];
     memset(buff, 0, sizeof(buff));
+
+    const char *cmd = "ls -la";
+
+    if (!cmd || !*cmd)
+        exit(EXIT_FAILURE);
 
     int _outPipe[2];
 
@@ -32,10 +35,16 @@ int main()
         return 1;
     }
 
+    wordexp_t we;
+    wordexp(cmd, &we, 0);
+    char **w = we.we_wordv;
+
     int pid;
     if ((pid = fork()) == -1)
     {
         perror("fork failed\n");
+
+        wordfree(&we);
         return 2;
     }
 
@@ -44,18 +53,8 @@ int main()
         dup2(_outPipe[FD_IN], STDOUT_FILENO);
         close(_outPipe[FD_OUT]);
 
-        if (!cmd || !*cmd)
-            exit(EXIT_FAILURE);
-
-        wordexp_t we;
-        wordexp(cmd, &we, 0);
-
-        char **w = we.we_wordv;
-
-        if (execve(w[0], (char**) w, __environ) == -1)
+        if (execvp(w[0], (char**) w) == -1)
             perror("could not execve...");
-
-        wordfree(&we);
 
         exit(EXIT_FAILURE);
     }
@@ -93,6 +92,10 @@ int main()
             }
         }
     }
+
+    close(_outPipe[FD_OUT]);
+
+    wordfree(&we);
 
     return 0;
 }
