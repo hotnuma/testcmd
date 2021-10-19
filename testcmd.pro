@@ -16,19 +16,15 @@ SOURCES = \
     samples/cprocess.cpp \
     samples/cregexp.cpp \
     samples/default.cpp \
-    samples/getline.cpp \
-    samples/getlineptr.cpp \
-    samples/parselist.cpp \
     samples/pipe_select.cpp \
-    samples/popen.cpp \
-    samples/proc_asound.cpp \
     samples/testout.cpp \
-    samples/while_fread.cpp \
     samples/while_read.cpp
 
 DISTFILES += \
+    License.txt \
+    Readme.txt \
     meson.build \
     install.sh \
-    samples/testout.sh
+    readme.md
 
 

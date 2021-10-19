@@ -30,9 +30,9 @@ int main()
         buffer.terminate(buffer.size() + nb_read);
     }
 
-    print(buffer);
-
     close(fd);
+
+    print(buffer);
 
     return 0;
 }

@@ -1,6 +1,6 @@
-#include "CDirParser.h"
+#include <CDirParser.h>
 
-#include "print.h"
+#include <print.h>
 
 int main()
 {

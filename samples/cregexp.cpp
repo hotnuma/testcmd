@@ -9,19 +9,15 @@ int main()
 
     CRegExp rx("(\\w+)");
 
-    CString output = str;
     int pos = 0;
 
     while ((pos = rx.indexIn(str, pos)) != -1)
     {
         CString part = rx.cap(0);
 
-        //print("count = %i", rx.captureCount());
+        print("count = %i", rx.captureCount());
 
         print(part);
-
-        output += part;
-        output += "\n";
 
         if (strcmp(part.c_str(), "blé") == 0)
         {
