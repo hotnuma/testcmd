@@ -4,8 +4,8 @@ CONFIG = c++11
 DEFINES =
 INCLUDEPATH =
 
-HEADERS = \
-    other/stristr.h
+CONFIG += link_pkgconfig
+PKGCONFIG = dbus-1
 
 SOURCES = \
     0Temp.cpp \
@@ -15,8 +15,11 @@ SOURCES = \
     samples/cfile_write.cpp \
     samples/cprocess.cpp \
     samples/cregexp.cpp \
+    samples/dbus.cpp \
     samples/default.cpp \
     samples/pipe_select.cpp \
+    samples/strGetLine.cpp \
+    samples/strGetLinePtr.cpp \
     samples/testout.cpp \
     samples/while_read.cpp
 
@@ -25,6 +28,6 @@ DISTFILES += \
     Readme.txt \
     meson.build \
     install.sh \
-    readme.md
+    samples/testout.sh
 
 

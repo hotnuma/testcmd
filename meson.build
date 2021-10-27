@@ -15,14 +15,18 @@ cpp_args = [
     '-O2',
 ]
 
-#link_args = [
-#    '-static',
-#    '-Wl,-s'
-#]
+cc = meson.get_compiler('cpp')
+
+tinycpp_dep = declare_dependency(
+    dependencies : cc.find_library('tinycpp'),
+    include_directories : include_directories('.'),
+)
 
 app_deps = [
     dependency('libpcre'),
-    dependency('tinycpp', static : true),
+    dependency('dbus-1'),
+    tinycpp_dep,
+#    dependency('tinycpp', static : true),
 ]
 
 app_src = [
@@ -34,8 +38,6 @@ executable(
     cpp_args : cpp_args,
     dependencies : app_deps,
     sources : app_src,
-#    link_args : link_args,
-#    link_with : dependency('tinycpp'),
 )
 
 
