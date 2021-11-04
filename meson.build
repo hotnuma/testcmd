@@ -18,8 +18,8 @@ cpp_args = [
 cc = meson.get_compiler('cpp')
 
 tinycpp_dep = declare_dependency(
-    dependencies : cc.find_library('tinycpp'),
     include_directories : include_directories('.'),
+    dependencies : cc.find_library('tinycpp'),
 )
 
 app_deps = [

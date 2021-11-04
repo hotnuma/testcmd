@@ -7,7 +7,7 @@ int main()
     CString cmd = "ls -la";
 
     CProcess process;
-    if (!process.start(cmd, CPF_PIPEOUT))
+    if (!process.start(cmd, CP_PIPEOUT))
     {
         print("start failed");
 
