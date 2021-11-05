@@ -1,6 +1,6 @@
 
-/autre/
-/build/
+**/autre/
+**/build/
 *.pro.user
 
 
