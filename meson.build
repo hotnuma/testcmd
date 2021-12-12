@@ -26,7 +26,7 @@ app_deps = [
     dependency('libpcre'),
     dependency('dbus-1'),
     tinycpp_dep,
-#    dependency('tinycpp', static : true),
+    dependency('libusb'),
 ]
 
 app_src = [
