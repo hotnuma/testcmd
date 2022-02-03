@@ -22,11 +22,13 @@ tinycpp_dep = declare_dependency(
     dependencies : cc.find_library('tinycpp'),
 )
 
+# examples
+# dependency('dbus-1'),
+# dependency('libusb'),
+
 app_deps = [
     dependency('libpcre'),
-    dependency('dbus-1'),
     tinycpp_dep,
-    dependency('libusb'),
 ]
 
 app_src = [

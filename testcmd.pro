@@ -10,24 +10,31 @@ PKGCONFIG = dbus-1
 SOURCES = \
     0Temp.cpp \
     main.cpp \
-    samples/cdirparser.cpp \
-    samples/cfile_read.cpp \
-    samples/cfile_write.cpp \
-    samples/cprocess.cpp \
-    samples/cregexp.cpp \
-    samples/dbus.cpp \
-    samples/default.cpp \
-    samples/pipe_select.cpp \
-    samples/strGetLine.cpp \
-    samples/strGetLinePtr.cpp \
-    samples/testout.cpp \
-    samples/while_read.cpp
+    samples1/main.cpp \
+    samples1/therm_beta.cpp \
+    samples1/therm_steinharthart.cpp \
+    samples2/cdirparser.cpp \
+    samples2/cfile_read.cpp \
+    samples2/cfile_readwrite.cpp \
+    samples2/cprocess.cpp \
+    samples2/cregexp.cpp \
+    samples2/dbus.cpp \
+    samples2/find_prc.cpp \
+    samples2/getCurrentTime.cpp \
+    samples2/pipe_select.cpp \
+    samples2/proc_asound.cpp \
+    samples2/strGetLine.cpp \
+    samples2/strGetLinePtr.cpp \
+    samples2/strGetPart.cpp \
+    samples2/testout.cpp \
+    samples2/time.cpp \
+    samples2/usb_list.cpp \
+    samples2/while_read.cpp
 
 DISTFILES += \
-    License.txt \
-    Readme.txt \
-    meson.build \
     install.sh \
-    samples/testout.sh
+    License.txt \
+    meson.build \
+    Readme.md \
 
 
