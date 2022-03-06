@@ -10,6 +10,7 @@ PKGCONFIG = dbus-1
 SOURCES = \
     0Temp.cpp \
     main.cpp \
+    samples1/calcRb.cpp \
     samples1/main.cpp \
     samples1/therm_beta.cpp \
     samples1/therm_steinharthart.cpp \
