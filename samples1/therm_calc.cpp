@@ -1,6 +1,8 @@
 #include <math.h>
 #include <float.h>
-#include <print.h>
+#include <stdio.h>
+
+// https://www.onlinegdb.com/online_c_compiler
 
 const double T0 = 25 + 273.15;
 const double RT0 = 10000.0;
@@ -13,9 +15,9 @@ float readTemp(double val)
 
 int main()
 {
-    double val = readTemp(5000.0);
+    double val = readTemp(7000.0);
 
-    print("temp : %f", val);
+    printf("temp : %f\n", val);
 
     return 0;
 }
