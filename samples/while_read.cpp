@@ -11,7 +11,7 @@ int main()
 {
     CString buffer(CHUNCK * 2);
 
-    int fd = open("/home/hotnuma/ps_aux.txt", O_RDONLY);
+    int fd = open("/home/hotnuma/sys_prcquery.txt", O_RDONLY);
     if (fd < 0)
         return 1;
 
