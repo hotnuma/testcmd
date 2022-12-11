@@ -28,7 +28,9 @@ tinycpp_dep = declare_dependency(
 
 app_deps = [
     dependency('libpcre'),
-    dependency('dbus-1'),
+    #dependency('dbus-1'),
+    dependency('glib-2.0'),
+    #dependency('gtk+-3.0'),
     tinycpp_dep,
 ]
 
