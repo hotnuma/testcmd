@@ -30,6 +30,7 @@ app_deps = [
     dependency('libpcre'),
     #dependency('dbus-1'),
     dependency('glib-2.0'),
+    dependency('gudev-1.0'),
     #dependency('gtk+-3.0'),
     tinycpp_dep,
 ]

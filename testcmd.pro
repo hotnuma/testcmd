@@ -7,6 +7,8 @@ INCLUDEPATH =
 CONFIG += link_pkgconfig
 
 PKGCONFIG += glib-2.0
+PKGCONFIG += gudev-1.0
+
 #PKGCONFIG += gtk+-3.0
 #PKGCONFIG += dbus-1
 #DEFINES += GTK
