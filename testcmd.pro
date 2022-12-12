@@ -7,11 +7,11 @@ INCLUDEPATH =
 CONFIG += link_pkgconfig
 
 PKGCONFIG += glib-2.0
-PKGCONFIG += gudev-1.0
+PKGCONFIG += libxml-2.0
 
+#DEFINES += GTK
 #PKGCONFIG += gtk+-3.0
 #PKGCONFIG += dbus-1
-#DEFINES += GTK
 
 SOURCES = \
     0Temp.cpp \
