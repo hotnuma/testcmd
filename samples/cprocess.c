@@ -1,20 +1,20 @@
-#include <CProcess.h>
+#include <cprocess.h>
 
 #include <print.h>
 
 int main()
 {
-    CString cmd = "ls -la";
+    const char *cmd = "ls -la";
 
-    CProcess process;
-    if (!process.start(cmd, CP_PIPEOUT))
+    CProcessAuto *process = cprocess_new();
+    if (!cprocess_start(process, cmd, CP_PIPEOUT))
     {
         print("start failed");
 
         return -1;
     }
 
-    int status = process.exitStatus();
+    int status = cprocess_exitstatus(process);
 
     if (status != 0)
     {
@@ -23,9 +23,9 @@ int main()
         return -1;
     }
 
-    CString result = process.outBuff;
+    CString *result = cprocess_outbuff(process);
 
-    print(result);
+    print(c_str(result));
 
     return 0;
 }

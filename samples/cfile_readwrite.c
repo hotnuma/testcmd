@@ -1,30 +1,30 @@
-#include <CFile.h>
-
+#include <cfile.h>
 #include <print.h>
 
 int main()
 {
-    const char *inpath = "infile.txt";
-    const char *outpath = "outfile.txt";
+    const char *inpath = "/tmp/infile.txt";
+    const char *outpath = "/tmp/outfile.txt";
 
-    CFile file;
-    if (!file.read(inpath))
+    CFileAuto *infile = cfile_new();
+    if (!cfile_read(infile, inpath))
         return 1;
 
-    CFile outfile;
-    if (!outfile.open(outpath, "wb"))
+    CFileAuto *outfile = cfile_new();
+    if (!cfile_open(outfile, outpath, "wb"))
         return 1;
 
-    CString line;
-    while (file.getLine(line))
+    CStringAuto *line = cstr_new_size(32);
+    while (cfile_getline(infile, line))
     {
-        outfile << line;
-        outfile << "\n";
+        cfile_write(outfile, c_str(line));
+        cfile_write(outfile, "\n");
 
-        print(line);
+        print(c_str(line));
     }
 
     return 0;
 }
+
 
 
