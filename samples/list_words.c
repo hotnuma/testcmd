@@ -42,13 +42,12 @@ int main()
 {
     const char *filepath = "/usr/local/include/tinyc/print.h";
 
-    cfile_auto CFile *file = cfile_new();
-
+    CFileAuto *file = cfile_new();
     if (!cfile_read(file, filepath))
         return 1;
 
-    cstr_auto CString *line = cstr_new_size(32);
-    cstr_auto CString *word = cstr_new_size(32);
+    CStringAuto *line = cstr_new_size(32);
+    CStringAuto *word = cstr_new_size(32);
 
     while (cfile_getline(file, line))
     {
