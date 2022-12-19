@@ -1,37 +1,24 @@
 TEMPLATE = app
 TARGET = testcmd
-CONFIG = c++11
+CONFIG = c99 link_pkgconfig
 DEFINES =
 INCLUDEPATH =
-
-CONFIG += link_pkgconfig
-
-PKGCONFIG += glib-2.0
-PKGCONFIG += libxml-2.0
 
 #DEFINES += GTK
 #PKGCONFIG += gtk+-3.0
 #PKGCONFIG += dbus-1
+#PKGCONFIG += glib-2.0
+#PKGCONFIG += libxml-2.0
+
+PKGCONFIG += tinyc
 
 SOURCES = \
-    0Temp.cpp \
-    main.cpp \
-    samples/cdirparser.cpp \
-    samples/cfile_read.cpp \
-    samples/cfile_readwrite.cpp \
-    samples/cprocess.cpp \
-    samples/cregexp.cpp \
-    samples/find_prc.cpp \
-    samples/getCurrentTime.cpp \
-    samples/main.cpp \
-    samples/pipe_select.cpp \
-    samples/proc_asound.cpp \
-    samples/strFileRead.cpp \
-    samples/strGetLine.cpp \
-    samples/strGetLinePtr.cpp \
-    samples/strGetPart.cpp \
-    samples/time.cpp \
-    samples/usb_list.cpp
+    0Temp.c \
+    main.c \
+    samples/auto_free.c \
+    samples/cfile_read.c \
+    samples/list_words.c \
+    samples/main.c \
 
 DISTFILES += \
     install.sh \

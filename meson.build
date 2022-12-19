@@ -1,47 +1,39 @@
 project(
     'testcmd',
-    ['cpp'],
+    ['c'],
     version : '1.0',
     license : 'GPL-2.0',
     default_options : [
-        'cpp_std=c++11',
+        'c_std=c99',
     ],
 )
 
-cpp_args = [
+c_args = [
     '-Wall',
-    '-fno-rtti',
-    '-fno-exceptions',
+    '-Wextra',
     '-O2',
 ]
 
-cc = meson.get_compiler('cpp')
-
-tinycpp_dep = declare_dependency(
-    include_directories : include_directories('.'),
-    dependencies : cc.find_library('tinycpp'),
-)
-
 # examples
 # dependency('libusb'),
+#dependency('dbus-1'),
+#dependency('gudev-1.0'),
+#dependency('gtk+-3.0'),
+#dependency('libxml-2.0'),
+#dependency('glib-2.0'),
 
 app_deps = [
+    dependency('tinyc'),
     dependency('libpcre'),
-    dependency('libxml-2.0'),
-    #dependency('dbus-1'),
-    dependency('glib-2.0'),
-    #dependency('gudev-1.0'),
-    #dependency('gtk+-3.0'),
-    tinycpp_dep,
 ]
 
 app_src = [
-    'main.cpp',
+    'main.c',
 ]
 
 executable(
     'testcmd',
-    cpp_args : cpp_args,
+    c_args : c_args,
     dependencies : app_deps,
     sources : app_src,
 )
