@@ -65,7 +65,7 @@ int main()
         fd_set readfds;
         struct timeval timeout;
 
-        while (waitpid(pid, nullptr, WNOHANG) != pid)
+        while (waitpid(pid, NULL, WNOHANG) != pid)
         {
             timeout.tv_sec = 5;
             timeout.tv_usec = 0;
@@ -74,7 +74,7 @@ int main()
 
             FD_SET(_outPipe[FD_OUT], &readfds);
 
-            select(FD_SETSIZE, &readfds, nullptr, nullptr, &timeout);
+            select(FD_SETSIZE, &readfds, NULL, NULL, &timeout);
 
             if (FD_ISSET(_outPipe[FD_OUT], &readfds))
             {

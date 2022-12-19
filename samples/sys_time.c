@@ -7,7 +7,7 @@
 
 void print_unixtime()
 {
-    printf("timestamp: %" PRId64 "\n", time(nullptr));
+    printf("timestamp: %" PRId64 "\n", time(NULL));
 }
 
 void print_microseconds()
@@ -37,7 +37,7 @@ void print_microseconds()
 
 int main(void)
 {
-    setbuf(stdout, nullptr);
+    setbuf(stdout, NULL);
 
     print_unixtime();
     print_microseconds();

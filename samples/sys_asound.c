@@ -1,4 +1,4 @@
-#include <CDirParser.h>
+#include <cdirparser.h>
 #include <stdio.h>
 #include <string.h>
 
@@ -40,17 +40,17 @@ int main()
 {
     const char *indir = "/proc/asound";
 
-    CDirParser dir;
-    if (!dir.open(indir, CDP_FILES | CDP_SUBDIRS))
+    CDirParserAuto *dir = cdirparser_new();
+    if (!cdirparser_open(dir, indir, CDP_FILES | CDP_SUBDIRS))
         return 1;
 
-    CString filepath;
+    CStringAuto *filepath = cstr_new_size(32);
 
-    while (dir.read(filepath))
+    while (cdirparser_read(dir, filepath))
     {
-        if (filepath.endsWith("/status"))
+        if (cstr_endswith(filepath, "/status", true))
         {
-            is_running(filepath);
+            is_running(c_str(filepath));
         }
 
         //print(filepath);

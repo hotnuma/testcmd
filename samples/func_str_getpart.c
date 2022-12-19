@@ -5,15 +5,15 @@
 
 int main()
 {
-    CString buff = "   123   456   789    1 2 3 4 5 6    ";
+    char buff[] = "   123   456   789    1 2 3 4 5 6    ";
     int nparts = 3;
 
-    char *ptr = buff.data();
+    char *ptr = buff;
     char *result;
     int length;
 
     int count = 0;
-    while (count < nparts && strGetPart(&ptr, &result, &length))
+    while (count < nparts && str_getpart(&ptr, &result, &length))
     {
         result[length] = '\0';
 

@@ -1,16 +1,16 @@
-#include <CString.h>
-
+#include <cstring.h>
+#include <libstr.h>
 #include <print.h>
 
 int main()
 {
-    CString buffer = "bla\nble\nblie";
+    char buffer[] = "bla\nble\nblie";
 
-    char *ptr = buffer.data();
+    char *ptr = buffer;
     char *result;
     int length;
 
-    while (strGetLinePtr(&ptr, &result, &length))
+    while (str_getlineptr(&ptr, &result, &length))
     {
         result[length] = '\0';
         print(result);
