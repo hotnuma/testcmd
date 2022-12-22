@@ -36,6 +36,7 @@ executable(
     c_args : c_args,
     dependencies : app_deps,
     sources : app_src,
+    install : false,
 )
 
 

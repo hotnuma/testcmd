@@ -15,6 +15,14 @@ PKGCONFIG += tinyc
 SOURCES = \
     0Temp.c \
     main.c \
+    samples/cdirparser.c \
+    samples/cfile_read.c \
+    samples/cfile_readwrite.c \
+    samples/cfile_words.c \
+    samples/cprocess.c \
+    samples/func_cstr_fileread.c \
+    samples/func_str_getline.c \
+    samples/git-log.c
 
 DISTFILES += \
     install.sh \
