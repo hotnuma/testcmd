@@ -18,13 +18,13 @@ c_args = [
 # dependency('libusb'),
 #dependency('dbus-1'),
 #dependency('gudev-1.0'),
-#dependency('gtk+-3.0'),
 #dependency('libxml-2.0'),
-#dependency('glib-2.0'),
 
 app_deps = [
     dependency('tinyc'),
     dependency('libpcre'),
+    #dependency('glib-2.0'),
+    #dependency('gtk+-3.0'),
 ]
 
 app_src = [
