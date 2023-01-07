@@ -22,8 +22,9 @@ c_args = [
 
 app_deps = [
     dependency('tinyc'),
-    dependency('libpcre'),
-    #dependency('glib-2.0'),
+    #dependency('libpcre'),
+    dependency('glib-2.0'),
+    dependency('gio-2.0'),
     #dependency('gtk+-3.0'),
 ]
 
