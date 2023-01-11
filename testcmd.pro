@@ -2,12 +2,12 @@ TEMPLATE = app
 TARGET = testcmd
 CONFIG = c99 link_pkgconfig
 DEFINES =
-#DEFINES += GTK
 INCLUDEPATH =
+PKGCONFIG =
 
 PKGCONFIG += gtk+-3.0
-#PKGCONFIG += dbus-1
 #PKGCONFIG += glib-2.0
+#PKGCONFIG += dbus-1
 #PKGCONFIG += libxml-2.0
 
 PKGCONFIG += tinyc
@@ -15,6 +15,14 @@ PKGCONFIG += tinyc
 SOURCES = \
     0Temp.c \
     main.c \
+    samples/cdirparser.c \
+    samples/cfile_read.c \
+    samples/cfile_readwrite.c \
+    samples/cfile_words.c \
+    samples/cprocess.c \
+    samples/func_cstr_fileread.c \
+    samples/func_str_getline.c \
+    samples/gio_app_info.c
 
 DISTFILES += \
     install.sh \
