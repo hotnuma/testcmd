@@ -33,7 +33,7 @@ app_src = [
 ]
 
 executable(
-    'testcmd',
+    meson.project_name(),
     c_args : c_args,
     dependencies : app_deps,
     sources : app_src,
