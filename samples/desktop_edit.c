@@ -7,6 +7,16 @@
 #include <glib.h>
 #include <stdbool.h>
 
+#define DESKTOP_NAME "XFCE"
+
+typedef enum
+{
+    DESK_SHOW,
+    DESK_HIDE,
+    DESK_TOGGLE,
+
+} DeskView;
+
 typedef struct
 {
     GList *sysdirs;
@@ -102,24 +112,33 @@ bool app_get_userpath(Application *app, const gchar *id)
     return false;
 }
 
-bool desktop_hide(Application *app, const gchar *id)
+bool desktop_edit(Application *app, const gchar *id, DeskView show)
 {
+    const gchar *srcpath = NULL;
+    const gchar *destpath = NULL;
+
     if (!app_get_syspath(app, id))
         return false;
 
-    app_get_userpath(app, id);
+    if (app_get_userpath(app, id))
+    {
+        srcpath = c_str(app->userpath);
+        destpath = srcpath;
+    }
+    else
+    {
+        srcpath = c_str(app->syspath);
+        destpath = c_str(app->userpath);
+    }
 
-    const gchar *syspath = c_str(app->syspath);
-    const gchar *userpath = c_str(app->userpath);
-
-    print(syspath);
-    print(userpath);
+    print(srcpath);
+    print(destpath);
 
     CFileAuto *file = cfile_new();
-    if (!cfile_read(file, syspath))
+    if (!cfile_read(file, srcpath))
         return 1;
 
-    if (!cfile_open(file, userpath, "wb"))
+    if (!cfile_open(file, destpath, "wb"))
         return 1;
 
     char *ptr = cfile_data(file);
@@ -138,23 +157,30 @@ bool desktop_hide(Application *app, const gchar *id)
 
             cstrlist_split(parts, result, ";", false, true);
 
-            gint found = cstrlist_find(parts, "XFCE", true);
-
-            if (found > -1)
-            {
-                cstrlist_remove_at(parts, found);
-            }
-
             cfile_write(file, "OnlyShowIn=");
+
+            bool is_visible = false;
 
             gint size = cstrlist_size(parts);
             for (gint i = 0; i < size; ++i)
             {
                 const gchar *part = c_str(cstrlist_at(parts, i));
 
+                if (strcmp(part, DESKTOP_NAME) == 0)
+                {
+                    is_visible = true;
+                    continue;
+                }
+
                 print(part);
 
                 cfile_write(file, part);
+                cfile_write(file, ";");
+            }
+
+            if (show == DESK_SHOW || (!is_visible && show == DESK_TOGGLE))
+            {
+                cfile_write(file, DESKTOP_NAME);
                 cfile_write(file, ";");
             }
 
@@ -174,7 +200,7 @@ int main()
 {
     Application *app = app_init();
 
-    desktop_hide(app, "yelp.desktop");
+    desktop_edit(app, "yelp.desktop", DESK_TOGGLE);
 
     apps_cleanup(app);
 
