@@ -1,11 +1,11 @@
-#include <cstring.h>
+#include <cfile.h>
 #include <print.h>
 
 int main()
 {
     CStringAuto *buffer = cstr_new_size(512);
 
-    cstr_fileread(buffer, "/proc/meminfo");
+    file_read(buffer, "/proc/meminfo");
 
     print(c_str(buffer));
 
