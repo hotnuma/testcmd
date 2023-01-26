@@ -7,7 +7,7 @@ PKGCONFIG =
 
 PKGCONFIG += tinyc
 #PKGCONFIG += gtk+-3.0
-#PKGCONFIG += glib-2.0
+#PKGCONFIG = glib-2.0
 #PKGCONFIG += dbus-1
 #PKGCONFIG += libxml-2.0
 
@@ -19,6 +19,7 @@ SOURCES = \
     samples/cprocess.c \
     0Temp.c \
     main.c \
+    samples/desktop_hide.c \
     samples/func_file_getline.c \
     samples/func_file_read.c \
     samples/func_str_getlineptr.c
