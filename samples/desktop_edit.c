@@ -7,7 +7,7 @@
 #include <glib.h>
 #include <stdbool.h>
 
-#define DESKTOP_NAME "XFCE"
+//#define DESKTOP_NAME "XFCE"
 
 typedef enum
 {
@@ -19,6 +19,8 @@ typedef enum
 
 typedef struct
 {
+    gchar *current_desktop;
+
     GList *sysdirs;
     gchar *userdir;
 
@@ -34,6 +36,10 @@ static Application _app_global;
 Application* app_init()
 {
     Application *app = &_app_global;
+
+    const gchar *val = getenv("XDG_CURRENT_DESKTOP");
+    if (val)
+        app->current_desktop = g_strdup(val);
 
     app->sysdirs = NULL;
     const gchar* const* dirs = g_get_system_data_dirs();
@@ -59,6 +65,12 @@ Application* app_init()
 
 void apps_cleanup(Application *app)
 {
+    if (app->current_desktop)
+    {
+        g_free(app->current_desktop);
+        app->current_desktop = NULL;
+    }
+
     if (app->sysdirs)
     {
         g_list_free_full(app->sysdirs, g_free);
@@ -114,6 +126,10 @@ bool app_get_userpath(Application *app, const gchar *id)
 
 bool desktop_edit(Application *app, const gchar *id, DeskView show)
 {
+    if (!app->current_desktop)
+        return false;
+
+    const gchar *currdesktop = app->current_desktop;
     const gchar *srcpath = NULL;
     const gchar *destpath = NULL;
 
@@ -166,7 +182,7 @@ bool desktop_edit(Application *app, const gchar *id, DeskView show)
             {
                 const gchar *part = c_str(cstrlist_at(parts, i));
 
-                if (strcmp(part, DESKTOP_NAME) == 0)
+                if (strcmp(part, currdesktop) == 0)
                 {
                     is_visible = true;
                     continue;
@@ -180,7 +196,7 @@ bool desktop_edit(Application *app, const gchar *id, DeskView show)
 
             if (show == DESK_SHOW || (!is_visible && show == DESK_TOGGLE))
             {
-                cfile_write(file, DESKTOP_NAME);
+                cfile_write(file, currdesktop);
                 cfile_write(file, ";");
             }
 
