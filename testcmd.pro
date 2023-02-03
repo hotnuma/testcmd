@@ -21,7 +21,8 @@ SOURCES = \
     main.c \
     samples/func_file_getline.c \
     samples/func_file_read.c \
-    samples/func_str_getlineptr.c
+    samples/func_str_getlineptr.c \
+    samples/func_str_getpart.c
 
 DISTFILES += \
     install.sh \
