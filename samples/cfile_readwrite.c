@@ -3,28 +3,26 @@
 
 int main()
 {
-    const char *inpath = "/tmp/infile.txt";
-    const char *outpath = "/tmp/outfile.txt";
+    const char *inpath = "/etc/lsb-release";
+    const char *outpath = "/tmp/result.txt";
 
-    CFileAuto *infile = cfile_new();
-    if (!cfile_read(infile, inpath))
-        return 1;
+    CFileAuto *file = cfile_new();
+    if (!cfile_read(file, inpath))
+        return EXIT_FAILURE;
 
-    CFileAuto *outfile = cfile_new();
-    if (!cfile_open(outfile, outpath, "wb"))
-        return 1;
+    if (!cfile_open(file, outpath, "wb"))
+        return EXIT_FAILURE;
 
     CStringAuto *line = cstr_new_size(32);
-    while (cfile_getline(infile, line))
+    while (cfile_getline(file, line))
     {
-        cfile_write(outfile, c_str(line));
-        cfile_write(outfile, "\n");
+        cfile_write(file, c_str(line));
+        cfile_write(file, "\n");
 
         print(c_str(line));
     }
 
-    return 0;
+    return EXIT_SUCCESS;
 }
-
 
 
