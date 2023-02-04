@@ -19,14 +19,15 @@ SOURCES = \
     samples/cfile_readwrite.c \
     samples/cfile_words.c \
     samples/cprocess.c \
-    0Temp.c \
-    main.c \
     samples/find_prc.c \
     samples/func_file_getline.c \
     samples/func_file_read.c \
     samples/func_str_getlineptr.c \
     samples/func_str_getpart.c \
-    samples/sys_usblist.c
+    samples/lib_xml2.c \
+    samples/sys_usblist.c \
+    0Temp.c \
+    main.c \
 
 DISTFILES = \
     install.sh \
