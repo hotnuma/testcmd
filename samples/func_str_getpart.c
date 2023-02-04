@@ -24,7 +24,7 @@ int main()
 
         while (str_getpart(&start, &result, &len))
         {
-            if (count == 4)
+            if (++count == 5)
             {
                 print(result);
                 break;
@@ -32,8 +32,6 @@ int main()
 
             result[len] = '\0';
             print(result);
-
-            ++count;
         }
     }
 
