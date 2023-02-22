@@ -1,7 +1,7 @@
 TEMPLATE = app
 TARGET = testcmd
 CONFIG = c99 link_pkgconfig
-DEFINES =
+DEFINES = _GNU_SOURCE
 INCLUDEPATH =
 PKGCONFIG =
 
@@ -28,6 +28,7 @@ SOURCES = \
     samples/sys_usblist.c \
     0Temp.c \
     main.c \
+    samples/timediff.c
 
 DISTFILES = \
     install.sh \
