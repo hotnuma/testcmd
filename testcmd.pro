@@ -25,6 +25,7 @@ SOURCES = \
     samples/func_str_getlineptr.c \
     samples/func_str_getpart.c \
     samples/lib_xml2.c \
+    samples/netinterface.c \
     samples/sys_usblist.c \
     0Temp.c \
     main.c \
