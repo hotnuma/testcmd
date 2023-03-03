@@ -10,6 +10,7 @@ PKGCONFIG =
 #PKGCONFIG += libxml-2.0
 
 PKGCONFIG += tinyc
+#PKGCONFIG += polkit-gobject-1
 #PKGCONFIG += glib-2.0
 #PKGCONFIG += gio-2.0
 
