@@ -1,10 +1,12 @@
 #include <cdirparser.h>
+#include <libstr.h>
 #include <stdio.h>
 #include <string.h>
 
 #include <print.h>
 
 #define STATE_RUNNING "state: RUNNING"
+#define PART_POS 19
 
 bool is_running(const char *filepath)
 {
@@ -23,7 +25,7 @@ bool is_running(const char *filepath)
 
         if (strncmp(buff, STATE_RUNNING, strlen(STATE_RUNNING)) == 0)
         {
-            print("%s %s", filepath, buff);
+            //print("%s %s", filepath, buff);
 
             fclose(fp);
 
@@ -42,21 +44,39 @@ int main()
 
     CDirParserAuto *dir = cdirparser_new();
     if (!cdirparser_open(dir, indir, CDP_FILES | CDP_SUBDIRS))
-        return 1;
+        return EXIT_FAILURE;
 
     CStringAuto *filepath = cstr_new_size(32);
+    char part[24];
 
     while (cdirparser_read(dir, filepath))
     {
         if (cstr_endswith(filepath, "/status", true))
         {
-            is_running(c_str(filepath));
+            if (cstr_size(filepath) < PART_POS)
+                continue;
+
+            const char *p = c_str(filepath) + PART_POS;
+            const char *end = strchr(p, '/');
+
+            if (!end)
+                continue;
+
+            strncpy(part, p, end - p);
+
+            if (str_startswith(part, "pcm", true)
+                && str_endswith(part, "p", true))
+            {
+                print(c_str(filepath));
+            }
+
+            //is_running(c_str(filepath));
         }
 
-        //print(filepath);
+        //print(c_str(filepath));
     }
 
-    return 0;
+    return EXIT_SUCCESS;
 }
 
 
