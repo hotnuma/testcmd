@@ -1,4 +1,5 @@
 #include <cdirparser.h>
+#include <cstringlist.h>
 #include <libstr.h>
 #include <stdio.h>
 #include <string.h>
@@ -38,13 +39,13 @@ bool is_running(const char *filepath)
     return false;
 }
 
-int main()
+int parse(CStringList *list)
 {
     const char *indir = "/proc/asound";
 
     CDirParserAuto *dir = cdirparser_new();
     if (!cdirparser_open(dir, indir, CDP_FILES | CDP_SUBDIRS))
-        return EXIT_FAILURE;
+        return 0;
 
     CStringAuto *filepath = cstr_new_size(32);
     char part[24];
@@ -67,13 +68,27 @@ int main()
             if (str_startswith(part, "pcm", true)
                 && str_endswith(part, "p", true))
             {
-                print(c_str(filepath));
+                //print(c_str(filepath));
+
+                cstrlist_append(list, c_str(filepath));
             }
-
-            //is_running(c_str(filepath));
         }
+    }
 
-        //print(c_str(filepath));
+    return cstrlist_size(list);
+}
+
+int main()
+{
+    CStringListAuto *list = cstrlist_new_size(12);
+
+    int count = parse(list);
+
+    for (int i = 0; i < count; ++i)
+    {
+        CString *str = cstrlist_at(list, i);
+
+        print(c_str(str));
     }
 
     return EXIT_SUCCESS;
