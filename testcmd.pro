@@ -29,6 +29,7 @@ SOURCES = \
     samples/lib_xml2.c \
     samples/netinterface.c \
     samples/sys_asound.c \
+    samples/sys_netusage.c \
     samples/sys_usblist.c \
     0Temp.c \
     main.c \

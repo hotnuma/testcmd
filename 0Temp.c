@@ -1,5 +1,37 @@
 #if 0
 
+typedef struct DataStats {
+    unsigned long rx_packets;
+    unsigned long rx_errors;
+    int rx_over;
+    unsigned long tx_packets;
+    unsigned long tx_errors;
+    int tx_over;
+    double rx_bytes;
+    double tx_bytes;
+    double rx_bytes_comp;
+    double tx_bytes_comp;
+    double rx_packets_led;
+    double tx_packets_led;
+    unsigned long connect_time;
+    unsigned long current_time;
+    float top_speed;
+    int online_days;
+    int online_hour;
+    int online_min;
+    int online_sec;
+    unsigned long rx_packets_off;
+    unsigned long rx_errors_off;
+    int rx_over_off;
+    unsigned long tx_packets_off;
+    unsigned long tx_errors_off;
+    int tx_over_off;
+    double rx_bytes_off;
+    double tx_bytes_off;
+    double rx_bytes_comp_off;
+    double tx_bytes_comp_off;
+} DataStats;
+
     /* Print Destination address */
     printf("%s\t", rtInfo->dstAddr ? ntoa(rtInfo->dstAddr) : "0.0.0.0  ");
 
