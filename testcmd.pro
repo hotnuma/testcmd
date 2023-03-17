@@ -28,6 +28,8 @@ SOURCES = \
     samples/func_str_getpart.c \
     samples/lib_xml2.c \
     samples/sys_asound.c \
+    samples/sys_cpuload.c \
+    samples/sys_log.c \
     samples/sys_netinterface.c \
     samples/sys_netusage.c \
     samples/sys_timediff.c \
