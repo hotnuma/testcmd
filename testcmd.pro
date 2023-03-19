@@ -10,11 +10,13 @@ PKGCONFIG =
 #PKGCONFIG += libxml-2.0
 
 PKGCONFIG += tinyc
+PKGCONFIG += gumbo
 #PKGCONFIG += polkit-gobject-1
 #PKGCONFIG += glib-2.0
 #PKGCONFIG += gio-2.0
 
 SOURCES = \
+    samples/c_args.c \
     samples/cdirparser.c \
     samples/cfile_read.c \
     samples/cfile_readwrite.c \
@@ -26,6 +28,7 @@ SOURCES = \
     samples/func_file_read.c \
     samples/func_str_getlineptr.c \
     samples/func_str_getpart.c \
+    samples/lib_gumbo.c \
     samples/lib_xml2.c \
     samples/sys_asound.c \
     samples/sys_cpuload.c \
