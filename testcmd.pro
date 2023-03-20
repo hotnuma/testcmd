@@ -28,7 +28,6 @@ SOURCES = \
     samples/func_file_read.c \
     samples/func_str_getlineptr.c \
     samples/func_str_getpart.c \
-    samples/lib_gumbo.c \
     samples/lib_xml2.c \
     samples/sys_asound.c \
     samples/sys_cpuload.c \
