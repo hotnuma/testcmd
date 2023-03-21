@@ -22,9 +22,11 @@ SOURCES = \
     samples/cfile_read.c \
     samples/cfile_readwrite.c \
     samples/cprocess.c \
+    samples/cregexp.c \
     samples/func_fgets.c \
     samples/func_file_getline.c \
     samples/func_file_read.c \
+    samples/func_get_localtime.c \
     samples/func_str_getlineptr.c \
     samples/func_str_getpart.c \
     samples/lib_xml2.c \
