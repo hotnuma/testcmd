@@ -17,12 +17,11 @@ PKGCONFIG += gumbo
 
 SOURCES = \
     samples/c_args.c \
+    samples/c_autofree.c \
     samples/cdirparser.c \
     samples/cfile_read.c \
     samples/cfile_readwrite.c \
-    samples/cfile_words.c \
     samples/cprocess.c \
-    samples/find_prc.c \
     samples/func_fgets.c \
     samples/func_file_getline.c \
     samples/func_file_read.c \
