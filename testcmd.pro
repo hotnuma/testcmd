@@ -16,27 +16,22 @@ PKGCONFIG += gumbo
 #PKGCONFIG += gio-2.0
 
 SOURCES = \
-    samples/c_args.c \
-    samples/c_autofree.c \
-    samples/cdirparser.c \
-    samples/cfile_read.c \
-    samples/cfile_readwrite.c \
-    samples/cprocess.c \
-    samples/cregexp.c \
-    samples/func_fgets.c \
-    samples/func_file_getline.c \
-    samples/func_file_read.c \
-    samples/func_get_localtime.c \
-    samples/func_str_getlineptr.c \
-    samples/func_str_getpart.c \
-    samples/lib_xml2.c \
-    samples/sys_asound.c \
-    samples/sys_cpuload.c \
-    samples/sys_log.c \
-    samples/sys_netinterface.c \
-    samples/sys_netusage.c \
-    samples/sys_timediff.c \
-    samples/sys_usblist.c \
+    examples/c_args.c \
+    examples/c_autofree.c \
+    examples/cdirparser.c \
+    examples/cfile_read.c \
+    examples/cfile_readwrite.c \
+    examples/cprocess.c \
+    examples/cregexp.c \
+    examples/func_fgets.c \
+    examples/func_file_getline.c \
+    examples/func_file_read.c \
+    examples/func_get_localtime.c \
+    examples/func_str_getlineptr.c \
+    examples/func_str_getpart.c \
+    examples/sys_cpuload.c \
+    examples/sys_log.c \
+    examples/sys_timediff.c \
     0Temp.c \
     main.c
 
