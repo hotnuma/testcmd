@@ -30,6 +30,7 @@ SOURCES = \
     examples/func_str_getlineptr.c \
     examples/func_str_getpart.c \
     examples/sys_cpuload.c \
+    examples/sys_getpid.c \
     examples/sys_log.c \
     examples/sys_timediff.c \
     0Temp.c \
