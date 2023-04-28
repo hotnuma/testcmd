@@ -17,6 +17,7 @@ PKGCONFIG += gumbo
 
 SOURCES = \
     examples/c_args.c \
+    examples/c_args_to_list.c \
     examples/c_autofree.c \
     examples/cdirparser.c \
     examples/cfile_read.c \
