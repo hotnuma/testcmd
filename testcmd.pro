@@ -17,7 +17,7 @@ PKGCONFIG += gumbo
 
 SOURCES = \
     examples/c_args.c \
-    examples/c_args_to_list.c \
+    examples/c_args_to_str.c \
     examples/c_autofree.c \
     examples/cdirparser.c \
     examples/cfile_read.c \
@@ -30,6 +30,7 @@ SOURCES = \
     examples/func_get_localtime.c \
     examples/func_str_getlineptr.c \
     examples/func_str_getpart.c \
+    examples/sys_cmdline.c \
     examples/sys_cpuload.c \
     examples/sys_getpid.c \
     examples/sys_log.c \
