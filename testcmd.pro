@@ -10,7 +10,8 @@ PKGCONFIG =
 #PKGCONFIG += libxml-2.0
 
 PKGCONFIG += tinyc
-PKGCONFIG += gumbo
+PKGCONFIG += libcurl
+#PKGCONFIG += gumbo
 #PKGCONFIG += polkit-gobject-1
 #PKGCONFIG += glib-2.0
 #PKGCONFIG += gio-2.0
@@ -18,6 +19,7 @@ PKGCONFIG += gumbo
 SOURCES = \
     examples/c_args.c \
     examples/c_autofree.c \
+    examples/c_autofree_test.c \
     examples/cdirparser.c \
     examples/cfile_read.c \
     examples/cfile_readwrite.c \

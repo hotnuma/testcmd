@@ -27,7 +27,8 @@ c_args = [
 
 app_deps = [
     dependency('tinyc'),
-    dependency('gumbo'),
+    dependency('libcurl'),
+    #dependency('gumbo'),
 ]
 
 app_src = [
