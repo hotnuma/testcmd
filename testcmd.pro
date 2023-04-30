@@ -6,15 +6,15 @@ INCLUDEPATH =
 PKGCONFIG =
 
 #PKGCONFIG += dbus-1
+#PKGCONFIG += glib-2.0
+#PKGCONFIG += gio-2.0
+#PKGCONFIG += gumbo
 #PKGCONFIG += libusb
 #PKGCONFIG += libxml-2.0
+#PKGCONFIG += polkit-gobject-1
 
 PKGCONFIG += tinyc
 PKGCONFIG += libcurl
-#PKGCONFIG += gumbo
-#PKGCONFIG += polkit-gobject-1
-#PKGCONFIG += glib-2.0
-#PKGCONFIG += gio-2.0
 
 SOURCES = \
     examples/c_args.c \
@@ -32,12 +32,10 @@ SOURCES = \
     examples/func_str_getlineptr.c \
     examples/func_str_getpart.c \
     examples/sys_cmdline.c \
-    examples/sys_cpuload.c \
     examples/sys_getpid.c \
-    examples/sys_log.c \
     examples/sys_timediff.c \
     0Temp.c \
-    main.c
+    main.c \
 
 DISTFILES = \
     install.sh \

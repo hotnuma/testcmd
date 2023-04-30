@@ -22,7 +22,7 @@ int main()
         ++count;
     }
 
-    while(isspace(*ptr)) ++ptr;
+    while (isspace(*ptr)) ++ptr;
 
     // end of buffer ?
     if (*ptr == '\0')

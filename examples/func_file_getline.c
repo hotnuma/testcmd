@@ -3,13 +3,12 @@
 
 int main()
 {
-    const char *filepath = "/etc/lsb-release";
-    CFileAuto *file = cfile_new();
+    CStringAuto *buffer = cstr_new_size(512);
 
-    if (!cfile_read(file, filepath))
-        return 1;
+    if (!file_read(buffer, "/etc/lsb-release"))
+        return EXIT_FAILURE;
 
-    const char *ptr = cfile_data(file);
+    const char *ptr = c_str(buffer);
     CStringAuto *line = cstr_new_size(32);
 
     while (file_getline(&ptr, line))
@@ -17,7 +16,7 @@ int main()
         print(c_str(line));
     }
 
-    return 0;
+    return EXIT_SUCCESS;
 }
 
 

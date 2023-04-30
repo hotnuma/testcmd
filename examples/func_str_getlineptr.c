@@ -4,13 +4,12 @@
 
 int main()
 {
-    const char *filepath = "/etc/lsb-release";
-    CFileAuto *file = cfile_new();
+    CStringAuto *buffer = cstr_new_size(512);
 
-    if (!cfile_read(file, filepath))
-        return 1;
+    if (!file_read(buffer, "/etc/lsb-release"))
+        return EXIT_FAILURE;
 
-    char *ptr = cfile_data(file);
+    char *ptr = c_str(buffer);
     char *result;
     int length;
 
@@ -20,7 +19,7 @@ int main()
         print(result);
     }
 
-    return 0;
+    return EXIT_SUCCESS;
 }
 
 
