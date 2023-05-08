@@ -16,19 +16,20 @@ c_args = [
 ]
 
 # examples
-#dependency('dbus-1'),
-#dependency('gio-2.0'),
-#dependency('glib-2.0'),
-#dependency('gudev-1.0'),
-#dependency('libpcre'),
-#dependency('libusb'),
-#dependency('libxml-2.0'),
-#dependency('polkit-gobject-1'),
 
 app_deps = [
     dependency('tinyc'),
-    dependency('libcurl'),
+    #dependency('dbus-1'),
+    #dependency('gio-2.0'),
+    #dependency('glib-2.0'),
+    #dependency('gudev-1.0'),
     #dependency('gumbo'),
+    #dependency('libcurl'),
+    dependency('libnotify'),
+    #dependency('libpcre'),
+    #dependency('libusb'),
+    #dependency('libxml-2.0'),
+    #dependency('polkit-gobject-1'),
 ]
 
 app_src = [
