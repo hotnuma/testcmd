@@ -41,7 +41,6 @@ SOURCES = \
     samples2/file_whileread.c \
     samples2/finddate.c \
     samples2/func_str_getpart2.c \
-    samples2/func_syslog.c \
     samples2/glib_keyfile.c \
     samples2/is_wireless.c \
     samples2/kebek_list.c \
@@ -52,6 +51,7 @@ SOURCES = \
     samples2/sys_netinterface.c \
     samples2/sys_polkit.c \
     samples2/sys_timeout.c \
+    samples2/syslog.c \
     samples2/test_autofree.c
 
 DISTFILES = \
