@@ -1,8 +1,9 @@
-
 #include <syslog.h>
 #include <stdarg.h>
 
 #define APP_NAME "myapp"
+
+// https://linux.die.net/man/3/syslog
 
 int app_log(int level, const char *fmt, ...)
 {
@@ -16,6 +17,8 @@ int app_log(int level, const char *fmt, ...)
 
 int main()
 {
+    // openlog / closelog are optional
+    
     //openlog(APP_NAME, LOG_PID, LOG_USER);
 
     syslog(LOG_INFO, "Start logging");
