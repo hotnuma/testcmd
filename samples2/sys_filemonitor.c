@@ -131,7 +131,7 @@ int main()
 {
     setbuf(stdout, NULL);
 
-    GFileMonitor *monitor = monitor_create("/home/hotnuma/Downloads", true);
+    GFileMonitor *monitor = monitor_create("/home/hotnuma/Downloads/test", true);
 
     if (!monitor)
         return EXIT_FAILURE;
