@@ -47,6 +47,7 @@ SOURCES = \
     samples2/lib_xml2.c \
     samples2/pipe_select.c \
     samples2/sys_cpuusage.c \
+    samples2/sys_dirstat.c \
     samples2/sys_filemonitor.c \
     samples2/sys_libnotify.c \
     samples2/sys_netinterface.c \
