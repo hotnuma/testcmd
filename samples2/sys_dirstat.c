@@ -6,14 +6,19 @@
 CString *_count_path = NULL;
 int _count_result = 0;
 
+CString *_long_path = NULL;
+int _long_result = 0;
+
 void init()
 {
     _count_path = cstr_new_size(256);
+    _long_path = cstr_new_size(256);
 }
 
 void release()
 {
     cstr_free(_count_path);
+    cstr_free(_long_path);
 }
 
 void parse(const char *dirpath)
@@ -22,12 +27,19 @@ void parse(const char *dirpath)
     if (!cdirparser_open(dir, dirpath, CDP_DIRS | CDP_FILES))
         return;
 
-    CStringAuto *filepath = cstr_new_size(32);
+    CStringAuto *filepath = cstr_new_size(128);
     int count = 0;
 
     while (cdirparser_read(dir, filepath))
     {
         ++count;
+
+        int length = cstr_size(filepath);
+        if (length > _long_result)
+        {
+            cstr_copy_len(_long_path, c_str(filepath), length);
+            _long_result = length;
+        }
     }
 
     if (count > _count_result)
@@ -60,6 +72,10 @@ int main()
     print("--------------------------------------------------");
     print("count_path : %s", c_str(_count_path));
     print("count_result : %d", _count_result);
+
+    print("--------------------------------------------------");
+    print("long_path : %s", c_str(_long_path));
+    print("long_result : %d", _long_result);
 
     release();
 

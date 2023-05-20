@@ -82,12 +82,26 @@ int main()
 {
     setbuf(stdout, NULL);
 
-    gfile = g_file_new_for_path("/home/hotnuma/Downloads/bla");
+    bool dirmonitor = false;
 
-    GFileMonitor *monitor = g_file_monitor_directory(
-                                gfile,
-                                G_FILE_MONITOR_WATCH_MOVES,
-                                NULL, NULL);
+    gfile = g_file_new_for_path("/home/hotnuma/Downloads/test");
+
+    GFileMonitor *monitor = NULL;
+
+    if (dirmonitor)
+    {
+        monitor = g_file_monitor_directory(gfile,
+                                           G_FILE_MONITOR_WATCH_MOVES,
+                                           NULL, NULL);
+    }
+    else
+    {
+        monitor = g_file_monitor(gfile,
+                                 G_FILE_MONITOR_WATCH_MOUNTS
+                                 | G_FILE_MONITOR_WATCH_MOVES,
+                                 NULL, NULL);
+    }
+
     if (monitor == NULL)
         return EXIT_FAILURE;
 
