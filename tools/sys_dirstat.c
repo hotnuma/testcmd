@@ -55,6 +55,7 @@ int main()
     init();
 
     const char *indir = "/";
+    int numdirs = 0;
 
     CDirParserAuto *dir = cdirparser_new();
     if (!cdirparser_open(dir, indir, CDP_DIRS | CDP_SUBDIRS))
@@ -64,7 +65,9 @@ int main()
 
     while (cdirparser_read(dir, dirpath))
     {
-        print(c_str(dirpath));
+        ++numdirs;
+
+        print("%d : %s", numdirs, c_str(dirpath));
 
         parse(c_str(dirpath));
     }
@@ -76,6 +79,9 @@ int main()
     print("--------------------------------------------------");
     print("long_path : %s", c_str(_long_path));
     print("long_result : %d", _long_result);
+
+    print("--------------------------------------------------");
+    print("numdirs : %d", numdirs);
 
     release();
 
