@@ -39,6 +39,24 @@ SOURCES = \
     exp_tinyc/func_str_getpart.c \
     exp_tinyc/sys_cmdline.c \
     main.c \
+    other/desktop_edit.c \
+    other/dnd_listbox.c \
+    other/file_whileread.c \
+    other/finddate.c \
+    other/func_fgets.c \
+    other/func_str_getpart2.c \
+    other/is_wireless.c \
+    other/kebek_list.c \
+    other/lib_xml2.c \
+    other/pipe_select.c \
+    other/sys_cpuusage.c \
+    other/sys_getpid.c \
+    other/sys_netinterface.c \
+    other/sys_polkit.c \
+    other/sys_timediff.c \
+    other/sys_timeout.c \
+    other/syslog.c \
+    other/test_autofree.c \
     tools/lib_curl.c \
     tools/mdspaces.c \
     tools/sys_asound.c \
