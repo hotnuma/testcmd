@@ -19,25 +19,11 @@ PKGCONFIG += libnotify
 
 SOURCES = \
     0Temp.c \
-    exp_glib/content_type.c \
-    exp_glib/gfile.c \
-    exp_glib/gfilemonitor.c \
-    exp_glib/gkeyfile.c \
-    exp_glib/libnotify.c \
-    exp_tinyc/c_args.c \
-    exp_tinyc/c_autofree.c \
-    exp_tinyc/c_autofree_test.c \
-    exp_tinyc/cdirparser.c \
-    exp_tinyc/cfile_read.c \
-    exp_tinyc/cfile_readwrite.c \
-    exp_tinyc/cprocess.c \
-    exp_tinyc/cregexp.c \
-    exp_tinyc/func_file_getline.c \
-    exp_tinyc/func_file_read.c \
-    exp_tinyc/func_get_localtime.c \
-    exp_tinyc/func_str_getlineptr.c \
-    exp_tinyc/func_str_getpart.c \
-    exp_tinyc/sys_cmdline.c \
+    glib/content_type.c \
+    glib/gfile.c \
+    glib/gfilemonitor.c \
+    glib/gkeyfile.c \
+    glib/libnotify.c \
     main.c \
     other/desktop_edit.c \
     other/dnd_listbox.c \
@@ -57,6 +43,20 @@ SOURCES = \
     other/sys_timeout.c \
     other/syslog.c \
     other/test_autofree.c \
+    tinyc/c_args.c \
+    tinyc/c_autofree.c \
+    tinyc/c_autofree_test.c \
+    tinyc/cdirparser.c \
+    tinyc/cfile_read.c \
+    tinyc/cfile_readwrite.c \
+    tinyc/cprocess.c \
+    tinyc/cregexp.c \
+    tinyc/func_file_getline.c \
+    tinyc/func_file_read.c \
+    tinyc/func_get_localtime.c \
+    tinyc/func_str_getlineptr.c \
+    tinyc/func_str_getpart.c \
+    tinyc/sys_cmdline.c \
     tools/lib_curl.c \
     tools/mdspaces.c \
     tools/sys_asound.c \
@@ -69,9 +69,9 @@ SOURCES = \
     tools/sys_netusage.c \
     tools/sys_usblist.c \
     tools/testout.c \
-    tools/wordparser.c
 
 DISTFILES = \
+    glib/keyfile.ini \
     install.sh \
     License.txt \
     meson.build \
