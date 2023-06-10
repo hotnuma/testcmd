@@ -30,6 +30,7 @@ SOURCES = \
     other/file_whileread.c \
     other/finddate.c \
     other/func_fgets.c \
+    other/func_fnmatch.c \
     other/func_str_getpart2.c \
     other/is_wireless.c \
     other/kebek_list.c \
