@@ -30,16 +30,16 @@ app_deps = [
     #dependency('polkit-gobject-1'),
 ]
 
-app_src = [
+app_sources = [
     'main.c',
 ]
 
 executable(
     meson.project_name(),
-    c_args : c_args,
-    dependencies : app_deps,
-    sources : app_src,
-    install : false,
+    c_args: c_args,
+    dependencies: app_deps,
+    sources: app_sources,
+    install: false,
 )
 
 
