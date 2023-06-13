@@ -12,7 +12,7 @@ int main()
 
     CStringAuto *filepath = cstr_new_size(32);
 
-    while (cdirparser_read(dir, filepath))
+    while (cdirparser_read(dir, filepath, NULL))
     {
         print(c_str(filepath));
     }
