@@ -56,9 +56,7 @@ SOURCES = \
     tinyc/cregexp.c \
     tinyc/func_file_getline.c \
     tinyc/func_file_read.c \
-    tinyc/func_other.c \
     tinyc/func_str_getlineptr.c \
-    tinyc/func_str_getpart.c \
     tinyc/sys_cmdline.c \
     tools/lib_curl.c \
     tools/mdspaces.c \
