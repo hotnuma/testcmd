@@ -28,6 +28,7 @@ SOURCES = \
     other/desktop_edit.c \
     other/dnd_listbox.c \
     other/file_whileread.c \
+    other/func_execvp.c \
     other/func_fgets.c \
     other/func_fnmatch.c \
     other/is_wireless.c \
