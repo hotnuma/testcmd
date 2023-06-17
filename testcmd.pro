@@ -42,8 +42,8 @@ SOURCES = \
     other/sys_timeout.c \
     other/syslog.c \
     other/test_autofree.c \
-    time/finddate.c \
     time/func_get_localtime.c \
+    time/func_localtime.c \
     time/func_strptime.c \
     time/sys_microseconds.c \
     time/sys_timediff.c \
