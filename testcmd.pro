@@ -53,11 +53,12 @@ SOURCES = \
     tinyc/cdirparser.c \
     tinyc/cfile_read.c \
     tinyc/cfile_readwrite.c \
+    tinyc/cfileinfo.c \
     tinyc/cprocess.c \
     tinyc/cregexp.c \
-    tinyc/func_file_getline.c \
-    tinyc/func_file_read.c \
-    tinyc/func_str_getlineptr.c \
+    tinyc/file_getline.c \
+    tinyc/file_read.c \
+    tinyc/str_getlineptr.c \
     tinyc/sys_cmdline.c \
     tools/lib_curl.c \
     tools/mdspaces.c \
