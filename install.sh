@@ -7,7 +7,6 @@ BUILDTYPE="plain"
 
 while [[ $# > 0 ]]; do
     key="$1"
-    echo "$1"
     case $key in
         noclean)
         NOCLEAN=1
