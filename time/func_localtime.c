@@ -23,31 +23,14 @@ void printtm(struct tm *tm)
 
 int main()
 {
-    struct tm t1 = {0};
-    if (strptime("2023/06/12", "%Y/%m/%d", &t1) == NULL)
-        return EXIT_FAILURE;
-
-    printtm(&t1);
-
-    //time_t epoch = mktime(&tm);
-
     char buf[255];
 
     time_t now = time(NULL);
-    struct tm *t2 = localtime(&now);
 
-    printtm(t2);
-    strftime(buf, sizeof(buf), "%Y-%m-%d %H:%M:%S", t2);
-    printf("date = %s\n", buf);
+    now -= 86400;
+    struct tm *tm = localtime(&now);
 
-    t2->tm_sec += 86400;
-    mktime(t2);
-
-    printtm(t2);
-
-    //printf("Unix  time : %" PRIu64 "\n", epoch);
-
-    strftime(buf, sizeof(buf), "%Y-%m-%d %H:%M:%S", t2);
+    strftime(buf, sizeof(buf), "%Y-%m-%d %H:%M:%S", tm);
     printf("date = %s\n", buf);
 
     return EXIT_SUCCESS;
