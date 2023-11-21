@@ -1,26 +1,26 @@
 #if 0
 
-#include <stdlib.h>
+#include <cstringlist.h>
 #include <locale.h>
-#include <string.h>
-#include <ctype.h>
-#include <print.h>
 
+#include <print.h>
 
 int main()
 {
-    //setlocale(LC_COLLATE, "fr_FR.UTF-8");
-    setlocale(LC_COLLATE, "");
-    //setlocale(LC_ALL, "");
+    setlocale(LC_ALL, "");
 
-    print("cmp = %d", strcasecmp("b", "à"));
+    const char *path = "./à/b/c.txt";
+    int len = strxfrm(NULL, path, 0);
 
-    //print("char = %c", (char) tolower('à'));
+    CStringAuto *result = cstr_new_size(len + 1);
+    strxfrm(cstr_data(result), path, len);
+    cstr_terminate(result, len);
+
+    print("%d", len);
+    print("%s", c_str(result));
 
     return EXIT_SUCCESS;
 }
-
-
 
 #endif
 
