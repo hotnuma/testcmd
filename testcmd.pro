@@ -35,6 +35,7 @@ SOURCES = \
     other/kebek_list.c \
     other/lib_xml2.c \
     other/pipe_select.c \
+    other/str_sort.c \
     other/sys_cpuusage.c \
     other/sys_getpid.c \
     other/sys_netinterface.c \
