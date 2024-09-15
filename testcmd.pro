@@ -31,6 +31,7 @@ SOURCES = \
     other/func_execvp.c \
     other/func_fgets.c \
     other/func_fnmatch.c \
+    other/html_edit.c \
     other/is_wireless.c \
     other/kebek_list.c \
     other/lib_xml2.c \
