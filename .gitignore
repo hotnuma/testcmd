@@ -1,6 +1,4 @@
-
 **/autre/
 **/build/
+**/.cache/
 *.pro.user
-
-
