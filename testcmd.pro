@@ -24,6 +24,8 @@ SOURCES = \
     glib/gfilemonitor.c \
     glib/gkeyfile.c \
     glib/libnotify.c \
+    libgd/matrix.c \
+    libgd/resize.c \
     main.c \
     other/desktop_edit.c \
     other/dnd_listbox.c \

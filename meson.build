@@ -13,11 +13,12 @@ c_args = [
     '-D_GNU_SOURCE',
 ]
 
-# examples
+# libraries
 
 app_deps = [
     dependency('tinyc'),
     #dependency('dbus-1'),
+    dependency('gdlib'),
     #dependency('gio-2.0'),
     #dependency('glib-2.0'),
     #dependency('gudev-1.0'),
