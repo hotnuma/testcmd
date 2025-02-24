@@ -9,7 +9,7 @@ int main(int argc, char **argv)
     // Help
     if (argc <= 4)
     {
-        printf("%s  input.jpg  output.jpg  width  height\n", argv[0]);
+        printf("%s  input.png  output.png  width  height\n", argv[0]);
         return 1;
     }
 
@@ -31,18 +31,18 @@ int main(int argc, char **argv)
         return 3;
     }
 
-    gdImagePtr in = gdImageCreateFromJpeg(fp);
+    gdImagePtr imgin = gdImageCreateFromPng(fp);
     fclose(fp);
-    if (!in)
+    if (!imgin)
     {
         fprintf(stderr, "Can't create image from %s\n", argv[1]);
         return 4;
     }
 
     // Resize
-    gdImageSetInterpolationMethod(in, GD_LANCZOS3);
-    gdImagePtr out = gdImageScale(in, w, h);
-    if (!out)
+    gdImageSetInterpolationMethod(imgin, GD_LANCZOS3);
+    gdImagePtr imgout = gdImageScale(imgin, w, h);
+    if (!imgout)
     {
         fprintf(stderr, "gdImageScale fails\n");
         return 5;
@@ -56,12 +56,12 @@ int main(int argc, char **argv)
         return 6;
     }
 
-    gdImageJpeg(out, fp, 90);
+    gdImagePng(imgout, fp);
     fclose(fp);
 
     // Cleanups
-    gdImageDestroy(in);
-    gdImageDestroy(out);
+    gdImageDestroy(imgin);
+    gdImageDestroy(imgout);
 
     return 0;
 }

@@ -2,8 +2,6 @@
 #include <stdbool.h>
 #include <stdio.h>
 
-GFile *gfile = NULL;
-
 static void debug_event(GFileMonitor *monitor,
                         GFile *event_file, GFile *other_file,
                         GFileMonitorEvent event_type,
@@ -66,10 +64,10 @@ static void debug_event(GFileMonitor *monitor,
         g_free(file_path);
     }
 
-    if (g_file_equal(gfile, event_file))
-    {
-        printf("g_file_equal\n");
-    }
+    //if (g_file_equal(gfile, event_file))
+    //{
+    //    printf("g_file_equal\n");
+    //}
 
     if (g_file_monitor_is_cancelled(monitor))
     {
@@ -78,13 +76,18 @@ static void debug_event(GFileMonitor *monitor,
 
 }
 
-int main()
+int main(int argc, const char **argv)
 {
     setbuf(stdout, NULL);
 
+    if (argc != 2)
+        return EXIT_FAILURE;
+
     bool dirmonitor = false;
 
-    gfile = g_file_new_for_path("/home/hotnuma/Downloads/test");
+    GFile *gfile = NULL;
+
+    gfile = g_file_new_for_path(argv[1]);
 
     GFileMonitor *monitor = NULL;
 
@@ -111,13 +114,14 @@ int main()
     if (!monitor)
         return EXIT_FAILURE;
 
+    g_object_unref(gfile);
+
     GMainLoop *mainloop = g_main_loop_new(NULL, FALSE);
 
     g_main_loop_run(mainloop);
 
     g_main_loop_unref(mainloop);
     g_object_unref(monitor);
-    g_object_unref(gfile);
 
     return 0;
 }

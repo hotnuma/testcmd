@@ -11,22 +11,21 @@ PKGCONFIG += tinyc
 #PKGCONFIG += gio-2.0
 #PKGCONFIG += gumbo
 #PKGCONFIG += libcurl
-PKGCONFIG += libnotify
+#PKGCONFIG += libnotify
 #PKGCONFIG += libusb
 #PKGCONFIG += libxml-2.0
 #PKGCONFIG += polkit-gobject-1
 
 
 SOURCES = \
-    0Temp.c \
     glib/content_type.c \
     glib/gfile.c \
-    glib/gfilemonitor.c \
+    glib/gfilemonitor1.c \
+    glib/gfilemonitor2.c \
     glib/gkeyfile.c \
     glib/libnotify.c \
     libgd/matrix.c \
     libgd/resize.c \
-    main.c \
     other/desktop_edit.c \
     other/dnd_listbox.c \
     other/file_whileread.c \
@@ -75,12 +74,14 @@ SOURCES = \
     tools/sys_netusage.c \
     tools/sys_usblist.c \
     tools/testout.c \
+    0Temp.c \
+    main.c \
 
 DISTFILES = \
     glib/keyfile.ini \
     install.sh \
     License.txt \
     meson.build \
-    Readme.md
+    Readme.md \
 
 

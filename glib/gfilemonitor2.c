@@ -4,6 +4,9 @@
  * gcc -o filemonitor g_file_monitor.c $(pkg-config --cflags --libs gio-2.0)
  *
  * It is possible to pass either a directory or a file path as argument.
+ * 
+ * https://gist.github.com/simu/0ed1e9b12871e20cec48efe73eeeb8e1
+ * 
  */
 #include <assert.h>
 #include <stdio.h>
