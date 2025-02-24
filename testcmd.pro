@@ -7,8 +7,8 @@ PKGCONFIG =
 
 PKGCONFIG += tinyc
 #PKGCONFIG += dbus-1
-#PKGCONFIG += glib-2.0
-#PKGCONFIG += gio-2.0
+KGCONFIG += gio-2.0
+PKGCONFIG += glib-2.0
 #PKGCONFIG += gumbo
 #PKGCONFIG += libcurl
 #PKGCONFIG += libnotify
