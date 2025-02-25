@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-// cbuild restyle restyle.c libgd
+// cbuild resize resize.c libgd
 
 int main(int argc, char **argv)
 {

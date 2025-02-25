@@ -24,6 +24,7 @@ SOURCES = \
     glib/gfilemonitor2.c \
     glib/gkeyfile.c \
     glib/libnotify.c \
+    libgd/colorswap.c \
     libgd/matrix.c \
     libgd/resize.c \
     other/desktop_edit.c \
