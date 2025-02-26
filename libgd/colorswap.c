@@ -11,20 +11,30 @@ enum ColorSwapType
     CSWP_RGB_BRG,
     CSWP_RGB_GRB,
     CSWP_RGB_GBR,
+    CSWP_RGB_TRS,
 };
 
-void img_filter(gdImage *src, enum ColorSwapType type);
-void rgb2rbg(int *r, int *g, int *b);
-void rgb2bgr(int *r, int *g, int *b);
-void rgb2brg(int *r, int *g, int *b);
-void rgb2grb(int *r, int *g, int *b);
-void rgb2gbr(int *r, int *g, int *b);
-
-void img_filter(gdImage *src, enum ColorSwapType type)
+typedef struct _color
 {
-    int c, a, r, g, b, new_pxl;
+    int r;
+    int g;
+    int b;
+    int val;
 
-    void (*func)(int*, int*, int*);
+} color;
+
+void img_filter(gdImage *src, enum ColorSwapType type, int val);
+void rgb2rbg(color *cl);
+void rgb2bgr(color *cl);
+void rgb2brg(color *cl);
+void rgb2grb(color *cl);
+void rgb2gbr(color *cl);
+void rgb2trs(color *cl);
+int color_trans(int c, int val);
+
+void img_filter(gdImage *src, enum ColorSwapType type, int val)
+{
+    void (*func)(color*);
 
     switch (type)
     {
@@ -43,28 +53,41 @@ void img_filter(gdImage *src, enum ColorSwapType type)
         case CSWP_RGB_GBR:
             func = &rgb2gbr;
             break;
+
+        case CSWP_RGB_TRS:
+            func = &rgb2trs;
+            break;
         default:
             func = &rgb2rbg;
             break;
     }
+
+    color cl = {0};
+    int c, a, new_pxl;
+
+    c = gdImageGetPixel(src, 0, 0);
+    a = gdImageAlpha(src, c);
+
+    printf("alpha = %d\n", a);
 
     for (int y = 0; y < src->sy; ++y)
     {
         for (int x = 0; x < src->sx; ++x)
         {
             c = gdImageGetPixel(src, x, y);
-
-            r = gdImageRed(src, c);
-            g = gdImageGreen(src, c);
-            b = gdImageBlue(src, c);
             a = gdImageAlpha(src, c);
 
-            func(&r, &g, &b);
+            cl.r = gdImageRed(src, c);
+            cl.g = gdImageGreen(src, c);
+            cl.b = gdImageBlue(src, c);
+            cl.val = val;
 
-            new_pxl = gdImageColorAllocateAlpha(src, r, g, b, a);
+            func(&cl);
+
+            new_pxl = gdImageColorAllocateAlpha(src, cl.r, cl.g, cl.b, a);
             if (new_pxl == -1)
             {
-                new_pxl = gdImageColorClosestAlpha(src, r, g, b, a);
+                new_pxl = gdImageColorClosestAlpha(src, cl.r, cl.g, cl.b, a);
             }
 
             gdImageSetPixel (src, x, y, new_pxl);
@@ -72,56 +95,76 @@ void img_filter(gdImage *src, enum ColorSwapType type)
     }
 }
 
-void rgb2rbg(int *r, int *g, int *b)
+void rgb2rbg(color *cl)
 {
-    (void) r;
-
-    int tmp = *b;
-    *b = *g;
-    *g = tmp;
+    int tmp = cl->b;
+    cl->b = cl->g;
+    cl->g = tmp;
 }
 
-void rgb2bgr(int *r, int *g, int *b)
+void rgb2bgr(color *cl)
 {
-    (void) g;
-
-    int tmp = *b;
-    *b = *r;
-    *r = tmp;
+    int tmp = cl->b;
+    cl->b = cl->r;
+    cl->r = tmp;
 }
 
-void rgb2brg(int *r, int *g, int *b)
+void rgb2brg(color *cl)
 {
-    int tmp = *b;
-    *b = *r;
-    *r = *g;
-    *g = tmp;
+    int tmp = cl->b;
+    cl->b = cl->r;
+    cl->r = cl->g;
+    cl->g = tmp;
 }
 
-void rgb2grb(int *r, int *g, int *b)
+void rgb2grb(color *cl)
 {
-    (void) b;
-
-    int tmp = *g;
-    *g = *r;
-    *r = tmp;
+    int tmp = cl->g;
+    cl->g = cl->r;
+    cl->r = tmp;
 }
 
-void rgb2gbr(int *r, int *g, int *b)
+void rgb2gbr(color *cl)
 {
-    int tmp = *g;
-    *g = *r;
-    *r = *b;
-    *b = tmp;
+    int tmp = cl->g;
+    cl->g = cl->r;
+    cl->r = cl->b;
+    cl->b = tmp;
+}
+
+void rgb2trs(color *cl)
+{
+    cl->r = color_trans(cl->r, cl->val);
+    cl->g = color_trans(cl->g, cl->val);
+    cl->b = color_trans(cl->b, cl->val);
+}
+
+int color_trans(int c, int val)
+{
+    c += val;
+
+    c &= 0xFF;
+
+    return c;
+
+    while (1)
+    {
+        if (c >= 0 && c <= 255)
+            return c;
+        else if (c < 0)
+            c += 255;
+        else if (c > 255)
+            c -= 255;
+    }
 }
 
 int main(int argc, char **argv)
 {
     const char *appname = argv[0];
 
-    if (argc < 4)
+    if (argc < 5)
     {
-        printf("%s input.png output.png 0\n", appname);
+        printf("%s input.png output.png 0 0\n", appname);
 
         return EXIT_FAILURE;
     }
@@ -129,6 +172,7 @@ int main(int argc, char **argv)
     const char *inpath = argv[1];
     const char *outpath = argv[2];
     int color_type = atoi(argv[3]);
+    int val = atoi(argv[4]);
 
     FILE *fp = fopen(inpath, "rb");
     if (!fp)
@@ -148,7 +192,7 @@ int main(int argc, char **argv)
         return EXIT_FAILURE;
     }
 
-    img_filter(img, color_type);
+    img_filter(img, color_type, val);
 
     fp = fopen(outpath, "wb");
     if (!fp)
