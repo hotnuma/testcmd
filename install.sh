@@ -25,6 +25,6 @@ fi
 
 meson setup build -Dbuildtype=${buildtype}
 ninja -C build
-sudo ninja -C build install
+sudo meson install -C build
 
 
