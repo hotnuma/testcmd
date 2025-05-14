@@ -27,6 +27,7 @@ SOURCES = \
     libgd/colorswap.c \
     libgd/matrix.c \
     libgd/resize.c \
+    other/cpu_count.c \
     other/desktop_edit.c \
     other/dnd_listbox.c \
     other/file_whileread.c \
